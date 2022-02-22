@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jaesysz_recipe_app/screens/screens.dart';
+import 'package:jaesysz_recipe_app/theme.dart';
+//import 'package:jaesysz_recipe_app/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,17 +10,19 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
-  @override
+    @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Jaesyz Recipe App',
-      home: Scaffold(
-        appBar: AppBar(
-          title:const Text('App Bar'),
-        ),
-        body:const Center(child: Text('Testing'),)
-      ),
+      // Theme 1
+      theme: AppTheme.light(),
+      darkTheme: AppTheme.dark(),
+      // Theme by Me
+      // theme: AppThemeNew.lightTheme(),
+      // darkTheme: AppThemeNew.darkTheme(),
+      themeMode: ThemeMode.dark,
+      home:  HomeScreen(),
+      //debugShowCheckedModeBanner: false,
     );
   }
 }

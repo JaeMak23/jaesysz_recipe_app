@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-abstract class AppColors{
+abstract class AppColors {
   static const secondary = Color(0xFF3B76F6);
   static const accent = Color(0xFFD6755B);
   static const textDark = Color(0xFF53585A);
@@ -30,12 +30,13 @@ abstract class AppTheme {
   static final visualDensity = VisualDensity.adaptivePlatformDensity;
 
   /// Light theme and its settings.
-  static ThemeData light(ThemeData theme) => ThemeData(
+  static ThemeData light() => ThemeData(
         brightness: Brightness.light,
-        accentColor: accentColor,
+        // accentColor: accentColor,
+        //colorScheme: ColorScheme.fromSwatch().copyWith(secondary: accentColor),
         visualDensity: visualDensity,
-        textTheme: GoogleFonts.mulishTextTheme(theme.textTheme)
-            .apply(bodyColor: AppColors.textDark),
+        textTheme:
+            GoogleFonts.mulishTextTheme().apply(bodyColor: AppColors.textDark),
         backgroundColor: _LightColors.background,
         scaffoldBackgroundColor: _LightColors.background,
         cardColor: _LightColors.card,
@@ -43,15 +44,18 @@ abstract class AppTheme {
           headline6: TextStyle(color: AppColors.textDark),
         ),
         iconTheme: const IconThemeData(color: AppColors.iconDark),
-      );
+      ).copyWith(
+          colorScheme:
+              ColorScheme.fromSwatch().copyWith(secondary: accentColor));
 
   /// Dark theme and its settings.
-  static ThemeData dark(ThemeData theme) => ThemeData(
+  static ThemeData dark() => ThemeData(
         brightness: Brightness.dark,
-        accentColor: accentColor,
+        //accentColor: accentColor,
+        //colorScheme: ColorScheme.fromSwatch().copyWith(secondary: accentColor),
         visualDensity: visualDensity,
-        textTheme: GoogleFonts.interTextTheme(theme.textTheme)
-            .apply(bodyColor: AppColors.textLigth),
+        textTheme:
+            GoogleFonts.interTextTheme().apply(bodyColor: AppColors.textLigth),
         backgroundColor: _DarkColors.background,
         scaffoldBackgroundColor: _DarkColors.background,
         cardColor: _DarkColors.card,
@@ -59,6 +63,25 @@ abstract class AppTheme {
           headline6: TextStyle(color: AppColors.textLigth),
         ),
         iconTheme: const IconThemeData(color: AppColors.iconLight),
-      );
+      ).copyWith(
+          colorScheme:
+              ColorScheme.fromSwatch().copyWith(secondary: accentColor));
 }
 
+abstract class AppThemeNew {
+  static ThemeData darkTheme() {
+    return ThemeData(
+      brightness: Brightness.dark,
+      primarySwatch: Colors.amber,
+      primaryColor: Colors.white70,
+    );
+  }
+
+  static ThemeData lightTheme() {
+    return ThemeData(
+      brightness: Brightness.light,
+      primarySwatch: Colors.amber,
+      primaryColor: Colors.white10,
+    );
+  }
+}
